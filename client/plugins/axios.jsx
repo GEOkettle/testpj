@@ -1,7 +1,12 @@
 import axios from 'axios';
 
+
+let addr;
+if (import.meta.env.VITE_ENV === 'dev') addr = import.meta.env.VITE_DEV_IP;
+if (import.meta.env.VITE_ENV === 'prd') addr = import.meta.env.VITE_PRD_IP;
+console.log(addr)
 const instance = axios.create({
-  baseURL:`http://localhost:${import.meta.env.VITE_SERVER_PORT}/`,
+  baseURL: `http://${addr}:${import.meta.env.VITE_SERVER_PORT}/geopf`,
 
   withCredentials: true,
 
@@ -9,7 +14,6 @@ const instance = axios.create({
   headers: {
     'Content-Type': 'application/json',
     Accept: 'application/json',
-    'Access-Control-Allow-Origin': '*',
   },
 });
 

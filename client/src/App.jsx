@@ -7,7 +7,7 @@ import axios from '../plugins/axios'
 function App() {
   const [count, setCount] = useState(0)
   useEffect(() => {
-    axios.get('http://localhost:5000/')
+    axios.get('/')
       .then(res => { 
         console.log(res)
       }).catch(err => { 
